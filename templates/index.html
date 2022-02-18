@@ -3,8 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-<h1>메인 페이지 입니다.</h1>
+<section class="login-form">
+    <h1> LOGO DESIGN </h1>
+    <form action="">
+        <div class="int-area">
+            <input type="text" name="id" id="id" autocomplete="off" required>
+            <label for ="id"> USER NAME </label>
+        </div>
+        <div class="int-area">
+            <input type="password" name="pw" id="pw" autocomplete="off" required>
+            <label for ="pw"> PASSWORD </label>
+        </div>
+        <div class="btn-area">
+            <button id="btn"
+            type="submit">LOGIN</button>
+        </div>
+    </form>
+    <div class="caption">
+        <a href="https://nid.naver.com/user2/V2Join?m=agree&lang=ko_KR&cpno=">회원가입 하시겠어요?</a>
+    </div>
+</section>
+<script>
+    let id = $('#id');
+    let pw = $('#pw');
+    let btn = $('#btn');
+
+    $(btn).on('click', function(){
+        if($(id).val()=="") {
+            $(id).next('label').addClass('warning');
+            setTimeout(function (){
+                $('label').removeClass('warning')
+            },1500);
+        } else if($(pw).val() == "") {
+            $(pw).next('label').addClass('warning');
+
+        }
+    });
+</script>
 </body>
 </html>
