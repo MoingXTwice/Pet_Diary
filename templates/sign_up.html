@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign_up</title>
+    <link rel="stylesheet" href="style2.css">
+
+</head>
+<body>
+<section class="sign_up-form">
+    <h1> LOGO DESIGN </h1>
+    <form action="">
+        <div class="int-area">
+            <input type="text" name="user_name" id="name" autocomplete="off" required>
+            <label for="name"> 이름 입력 </label>
+        </div>
+        <div class="int-area">
+            <input type="text" name="userid" id="id" autocomplete="off" required>
+            <label for="id"> ID 입력 </label>
+        </div>
+        <div class="int-area">
+            <input type="password" name="userpw" id="pw" autocomplete="off" onchange="check_pw()" required>
+            <label for="pw"> PASSWORD 입력 </label>
+        </div>
+        <div class="int-area">
+            <input type="password" name="userpw2" id="pw2" autocomplete="off" onchange="check_pw()" required>
+            <label for="pw2"> PASSWORD 확인 </label>
+        </div>
+
+        <div class="btn-area">
+            <button id="btn"
+                    type="submit">회원가입 완료!
+            </button>
+        </div>
+        <div class="caption">
+            <a href="">나가시겠어요?</a>
+        </div>
+    </form>
+</section>
+<script>
+    function check_pw() {
+        var pw = document.getElementById('pw').value;
+        var SC = ["!", "@", "#", "$", "%"];
+        var check_SC = 0;
+
+        if (pw.length < 6 || pw.length > 16) {
+            window.alert('비밀번호는 6글자 이상, 16글자 이하만 이용 가능합니다.');
+            document.getElementById('pw').value = '';
+        }
+        for (var i = 0; i < SC.length; i++) {
+            if (pw.indexOf(SC[i]) != -1) {
+                check_SC = 1;
+            }
+        }
+        if (check_SC == 0) {
+            window.alert('!,@,#,$,% 의 특수문자가 들어가 있지 않습니다.')
+            document.getElementById('pw').value = '';
+        }
+        if (document.getElementById('pw').value != '' && document.getElementById('pw2').value != '') {
+            if (document.getElementById('pw').value == document.getElementById('pw2').value) {
+                window.alert('비밀번호가 일치합니다.');
+            } else {
+                window.alert('비밀번호가 일치하지 않습니다.');
+
+            }
+        }
+    }
+</script>
+</body>
+</html>
