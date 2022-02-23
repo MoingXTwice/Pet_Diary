@@ -55,6 +55,15 @@ def sign_up_api():
 
 # TODO 회원가입시 아이디 중복 체크
 
+# 다이어리 보기 페이지
+@app.route('/diary')
+def diary():
+    return render_template('diary.html')
+
+# 다이어리 작성 페이지
+@app.route('/diary/post')
+def diary_post():
+    return render_template('post.html')
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
