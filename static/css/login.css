@@ -1,0 +1,87 @@
+* {
+    font-family: 'Noto Serif KR', serif;
+    }
+.signin {
+    height : 100vh;
+    background-image: url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA1MDVfMTk5%2FMDAxNTg4Njc0ODg0MDcx.d_dpre1qy2SpIvGKpNUmUe4pgnYEh076-AhEI2cmtCQg.CDG9oceOyn5a--nIkxZ85dT3zjkz7Fr9_t4Mhua1EMQg.JPEG.sukwontoto%2F1.jpg&type=sc960_832");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logogo{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.main_logo img{
+    width: 110px;
+}
+
+.signin h1 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.signin__card {
+    width: 450px;
+    margin: auto;
+    border-radius: 20px;
+    background-color: #DEB887;
+    padding-bottom : 15px;
+    box-shadow: 15px 15px 24px rgba(0, 0, 0, 0.4);
+
+}
+.signin__card h1{
+    padding-top : 30px;
+    padding-bottom : 15px;
+    text-align: center;
+}
+
+.signin__card form {
+    padding: 20px 30px;
+}
+
+.signin__card form input {
+    width: 100%;
+    margin: 8px auto 8px auto;
+    padding: 15px;
+    border: 0.5px solid black;
+    border-radius: 10px;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+#ID_Input{
+    margin-bottom: 30px;
+}
+
+#passWord_Input{
+    margin-bottom: 20px;
+}
+
+.login__join{
+    margin-top : 10px;
+}
+.signin__card form .login__join {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+.signin__card form [type="submit"] {
+    width: 180px;
+    background-color: #467FC8;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+.signin__card form #Regist_button {
+    background-color: #5C46C8;
+}

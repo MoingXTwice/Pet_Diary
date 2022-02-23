@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <link rel="stylesheet" href="../static/CSS/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<section class="signin container-fluid">
+    <div class="row">
+        <div class="logo_login">
+            <div class="logogo">
+            <a class= "main_logo" href="/"><img src="/static/Img/logo.png"></a>
+            </div>
+        <div class="signin__card">
+                  <h1>로그인</h1>
+          <form id="register_Form">
+            <span>아이디(이메일)</span>
+            <input id="ID_Input" type="email" placeholder="아이디(이메일)를 입력하세요." autocomplete="off" required>
+            <span>비밀번호</span>
+            <input id="passWord_Input" type="password" placeholder="비밀번호를 입력하세요." autocomplete="off" required>
+            <div class="login__join">
+                <input id="Login_button" type="submit" value="로그인">
+                <input id="Regist_button" type="submit" value="회원가입">
+            </div>
+          </form>
+        </div>
+        </div>
+    </div>
+</section>
+<script src="../static/JS/login.js"></script>
+</body>
+</html>
