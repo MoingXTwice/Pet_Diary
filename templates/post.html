@@ -8,7 +8,7 @@
         <div class="field-body">
             <div class="field">
                 <p class="control">
-                    <input class="input" type="text">
+                    <input class="input" type="text" id="title">
                 </p>
             </div>
         </div>
@@ -18,8 +18,12 @@
             <label class="label">내용</label>
         </div>
         <div class="field-body">
-        <textarea class="textarea"></textarea>
+            <textarea class="textarea" id="content"></textarea>
         </div>
     </div>
+    <input type="file" id="image">
+    <button class="button" onclick="postDiary()">등록하기</button>
+
+    <script src="/static/js/main.js"></script>
 </div>
 {% endblock %}

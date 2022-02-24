@@ -1,9 +1,11 @@
 import hashlib
+from datetime import datetime
 
 from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient
 
 app = Flask(__name__)
+
 
 client = MongoClient('localhost', 27017)
 db = client.petdiary
@@ -12,7 +14,6 @@ db = client.petdiary
 @app.route('/')
 def home():
     return render_template('index.html')
-
 # 로그인 api
 @app.route('/login', methods=['POST'])
 def login():
@@ -64,6 +65,34 @@ def diary():
 @app.route('/diary/post')
 def diary_post():
     return render_template('post.html')
+
+# 다이어리 작성 api
+@app.route('/diary/post', methods=['POST'])
+def diary_post_api():
+
+    title = request.form['title']
+    content = request.form['content']
+
+    image_type = ['JPG', 'jpg', 'PNG', 'png', 'jpeg']
+
+    image = request.files['image']
+
+    today = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+    extension = image.filename.split('.')[-1]
+
+    if extension not in image_type:
+        return jsonify({'result': 'False', 'msg': '올바른 파일 형식이 아닙니다.'})
+    filename = f'file-{today}'
+    save_to = f'static/img/{filename}.{extension}'
+    image.save(save_to)
+    doc = {
+        'title': title,
+        'content': content,
+        'image': f'{filename}.{extension}'
+    }
+    db.diary.insert_one(doc)
+
+    return jsonify({'result':'success'})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
