@@ -1,5 +1,6 @@
 import hashlib
 from datetime import datetime
+import requests
 
 from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient
@@ -77,6 +78,10 @@ def diary_post_api():
 
     image = request.files['image']
 
+    url = "http://spartacodingclub.shop/sparta_api/weather/seoul"
+    weather = requests.get(url).json()
+    weather_icon = weather['icon']
+
     today = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
     extension = image.filename.split('.')[-1]
 
@@ -88,7 +93,8 @@ def diary_post_api():
     doc = {
         'title': title,
         'content': content,
-        'image': f'{filename}.{extension}'
+        'image': f'{filename}.{extension}',
+        'weather': weather_icon
     }
     db.diary.insert_one(doc)
 
