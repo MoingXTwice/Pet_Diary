@@ -53,7 +53,7 @@ def sign_up_api():
         'name' : name_receive
     }
     db.member.insert_one(doc)
-    return jsonify({'result':'success'})
+    return jsonify({'result': 'success'})
 
 # TODO 회원가입시 아이디 중복 체크
 
