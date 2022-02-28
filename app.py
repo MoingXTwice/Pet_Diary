@@ -10,10 +10,18 @@ app = Flask(__name__)
 client = MongoClient('localhost', 27017)
 db = client.petdiary
 
+# 로그인 상태 관련 변수 선언
+login_state = 0
+
 # 첫 페이지 (로그인 페이지)
 @app.route('/')
 def home():
-    return render_template('index.html')
+    # 로그인 활성화
+    if login_state:
+        return render_template('base.html')
+    else:
+        return render_template('login.html')
+
 # 로그인 api
 @app.route('/login', methods=['POST'])
 def login():
