@@ -16,9 +16,10 @@ login_state = 0
 # 첫 페이지 (로그인 페이지)
 @app.route('/')
 def home():
-    # 로그인 활성화
+    # 로그인 활성
     if login_state:
         return render_template('base.html')
+    # 로그인 미활성
     else:
         return render_template('login.html')
 
