@@ -57,6 +57,11 @@ def sign_up_api():
 
 # TODO 회원가입시 아이디 중복 체크
 
+# 로그인 후 메인 페이지
+@app.route('/main')
+def main():
+    return render_template('main.html')
+
 # 다이어리 보기 페이지
 @app.route('/diary')
 def diary():
