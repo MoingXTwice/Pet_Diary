@@ -22,5 +22,83 @@ function postDiary() {
         }
 
     })
+}
 
+function login() {
+    let user_id = $('#user_id').val()
+    let password = $('#password').val()
+
+    if (user_id == "") {
+        alert('아이디를 입력해주세요.')
+        return;
+    } else if (password == "") {
+        alert('비밀번호를 입력해주세요.')
+        return;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "/login",
+        data: {
+            'user_id': user_id,
+            'password': password
+        },
+        success: function (response) {
+            console.log(response)
+            if (response['result'] == 'success') {
+                $.cookie('mytoken', response['token'], {path: '/'});
+                window.location.replace('/' + user_id);
+            } else {
+                alert(response['msg']);
+            }
+        }
+
+    })
+}
+
+function sign_up() {
+    let user_id = $('#user_id').val()
+    let password = $('#password').val()
+    let name = $('#name').val()
+
+    if (user_id == "") {
+        alert('아이디를 입력해주세요.')
+        return;
+    } else if (password == "") {
+        alert('비밀번호를 입력해주세요.')
+        return;
+    } else if (name == "") {
+        alert('이름을 입력해주세요.')
+        return;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "/sign_up",
+        data: {
+            'user_id': user_id,
+            'password': password,
+            'name': name
+        },
+        success: function (response) {
+            window.location.replace('/login');
+        }
+    });
+
+}
+
+$(document).ready(function () {
+
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+        todayHighlight: true,
+        toggleActive: true
+    });
+
+});
+
+function logout() {
+    $.removeCookie('mytoken', {path: '/'});
+    alert('정상적으로 로그아웃 되었습니다.')
+    window.location.href = "/login"
 }
